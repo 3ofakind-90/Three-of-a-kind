@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Arohi Akter</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        :root {
+            --primary-glow: #00ffcc;
+            --secondary-glow: #006666;
+            --tertiary-glow: #003333;
+            --dark-bg: #0a0a0a;
+            --card-bg: rgba(20, 20, 20, 0.8);
+            --text-primary: #ffffff;
+            --text-secondary: #cccccc;
+            --accent-teal: #00ccaa;
+            --border-color: rgba(0, 204, 170, 0.3);
+        }
+
+        body {
+            background: linear-gradient(135deg, #050505, #0a0a0a);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* Glowing background elements */
+        .glow-bg {
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.15;
+            z-index: -1;
+        }
+
+        .glow-1 {
+            background: var(--primary-glow);
+            top: 10%;
+            left: 10%;
+            animation: float 15s ease-in-out infinite;
+        }
+
+        .glow-2 {
+            background: var(--secondary-glow);
+            bottom: 10%;
+            right: 10%;
+            animation: float 18s ease-in-out infinite reverse;
+        }
+
+        .glow-3 {
+            background: var(--tertiary-glow);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: pulse 12s ease-in-out infinite;
+        }
+        
+                /* Additional glow elements */
+        .glow-4 {
+            background: var(--primary-glow);
+            width: 250px;
+            height: 250px;
+            bottom: 15%;
+            left: 5%;
+            animation: float 20s ease-in-out infinite alternate;
+        }
+
+        .glow-5 {
+            background: var(--secondary-glow);
+            width: 200px;
+            height: 200px;
+            top: 20%;
+            right: 15%;
+            animation: pulse 15s ease-in-out infinite alternate;
+        }
+
+
+        /* Navigation */
+        .hamburger-menu {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            z-index: 1000;
+            cursor: pointer;
+            background: rgba(10, 10, 10, 0.7);
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 0 20px rgba(0, 204, 170, 0.4);
+        }
+
+        .hamburger-menu span {
+            display: block;
+            width: 30px;
+            height: 2px;
+            background: var(--text-primary);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger-menu span::before,
+        .hamburger-menu span::after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 2px;
+            background: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
+        .hamburger-menu span::before {
+            transform: translateY(-10px);
+        }
+
+        .hamburger-menu span::after {
+            transform: translateY(10px);
+        }
+
+        .hamburger-menu.active span {
+            background: transparent;
+        }
+
+        .hamburger-menu.active span::before {
+            transform: rotate(45deg);
+            background: var(--accent-teal);
+        }
+
+        .hamburger-menu.active span::after {
+            transform: rotate(-45deg);
+            background: var(--accent-teal);
+        }
+
+        .nav-overlay {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(5, 5, 5, 0.98);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+            clip-path: circle(0% at 93% 6%);
+            transition: all 0.8s ease-out;
+        }
+
+        .nav-overlay.active {
+            clip-path: circle(150% at 93% 6%);
+        }
+
+        .nav-links {
+            list-style: none;
+            text-align: center;
+        }
+
+        .nav-links li {
+            margin: 30px 0;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            padding: 5px 10px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-teal);
+            text-shadow: 0 0 10px var(--primary-glow),
+                         0 0 20px var(--primary-glow),
+                         0 0 40px var(--primary-glow);
+        }
+
+        /* Back Button */
+        .back-btn {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            z-index: 1000;
+            cursor: pointer;
+            background: rgba(10, 10, 10, 0.7);
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 0 20px rgba(0, 204, 170, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            transform: translateX(-5px);
+            box-shadow: 0 0 25px rgba(0, 204, 170, 0.6);
+        }
+
+        .back-btn i {
+            font-size: 24px;
+            color: var(--text-primary);
+        }
+
+        /* Profile Container */
+        .profile-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 100px 5% 50px;
+        }
+
+        .profile-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .profile-img {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 5px solid var(--accent-teal);
+            box-shadow: 0 0 30px var(--primary-glow);
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .profile-img::after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border-radius: 50%;
+            border: 2px solid var(--primary-glow);
+            
+        }
+
+        .profile-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(30%);
+        }
+
+        .profile-name {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            color: var(--text-primary);
+            text-shadow: 0 0 15px var(--primary-glow);
+        }
+
+        .profile-role {
+            font-size: 1.8rem;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        .profile-tagline {
+            font-size: 1.4rem;
+            max-width: 700px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Profile Content */
+        .profile-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        @media (max-width: 900px) {
+            .profile-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .profile-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(to right, transparent, var(--accent-teal), transparent);
+            transform: translateY(-4px);
+            transition: transform 0.3s ease;
+        }
+
+        .profile-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 204, 170, 0.2);
+        }
+
+        .profile-card:hover::before {
+            transform: translateY(0);
+        }
+
+        .card-title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--accent-teal);
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .card-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: var(--accent-teal);
+            box-shadow: 0 0 10px var(--primary-glow);
+        }
+
+        .card-content {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .card-content p {
+            margin-bottom: 15px;
+        }
+
+        /* Skills Section */
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .skill-item {
+            padding: 8px 20px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 50px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 0 10px rgba(0, 204, 170, 0.2);
+            transition: all 0.3s ease;
+            color: var(--text-secondary);
+        }
+
+        .skill-item:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(0, 204, 170, 0.4);
+            color: var(--text-primary);
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        /* Experience Section */
+        .experience-item {
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .experience-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .experience-title {
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        .experience-company {
+            font-size: 1.1rem;
+            color: var(--accent-teal);
+            margin-bottom: 8px;
+        }
+
+        .experience-date {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+        }
+
+        .experience-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Contact Info */
+        .contact-info {
+            list-style: none;
+        }
+
+        .contact-info li {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-info li:last-child {
+            margin-bottom: 0;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 0 10px rgba(0, 204, 170, 0.2);
+        }
+
+        .contact-icon i {
+            font-size: 20px;
+            color: var(--accent-teal);
+        }
+
+        .contact-details {
+            flex: 1;
+        }
+
+        .contact-type {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 5px;
+        }
+
+        .contact-value {
+            font-size: 1.1rem;
+            color: var(--text-primary);
+        }
+
+        /* Social Links */
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 0 10px rgba(0, 204, 170, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            transform: translateY(-5px);
+            background: rgba(0, 0, 0, 0.7);
+            box-shadow: 0 0 15px rgba(0, 204, 170, 0.4);
+        }
+
+        .social-link i {
+            font-size: 20px;
+            color: var(--accent-teal);
+        }
+
+        /* Animations */
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px rgba(0, 204, 170, 0.5);
+            }
+            to {
+                text-shadow: 0 0 20px rgba(0, 204, 170, 0.8), 
+                             0 0 30px rgba(0, 204, 170, 0.6),
+                             0 0 40px rgba(0, 204, 170, 0.4);
+            }
+        }
+
+        @keyframes float {
+            0% {
+                transform: translate(0, 0);
+            }
+            50% {
+                transform: translate(20px, 20px);
+            }
+            100% {
+                transform: translate(0, 0);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.15;
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.2);
+                opacity: 0.2;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.15;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Glow Elements -->
+    <div class="glow-bg glow-1"></div>
+    <div class="glow-bg glow-2"></div>
+    <div class="glow-bg glow-3"></div>
+
+    <!-- Back Button -->
+    <a href="index.html" class="back-btn">
+        <i class="fas fa-arrow-left"></i>
+    </a>
+
+    <!-- Hamburger Menu -->
+    <div class="hamburger-menu">
+        <span></span>
+    </div>
+
+    <!-- Navigation Overlay -->
+    <div class="nav-overlay">
+        <ul class="nav-links">
+            <li><a href="index.html#home">Home</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#contact">Contact Us</a></li>
+        </ul>
+    </div>
+
+    <!-- Profile Container -->
+    <div class="profile-container">
+        <!-- Profile Header -->
+        <div class="profile-header">
+            <div class="profile-img">
+                <img src="https://i.imghippo.com/files/xszg2442ykw.jpg" alt="Arohi Akter">
+            </div>
+            <h1 class="profile-name">Arohi Akter</h1>
+            <div class="profile-role">Junior</div>
+            <p class="profile-tagline">In our friend circle, Arohi Akter is seen as a special person because she possesses countless qualities.</p>
+        </div>
+
+        <!-- Profile Content -->
+        <div class="profile-content">
+            <!-- About Card -->
+            <div class="profile-card">
+                <h2 class="card-title">About Me</h2>
+                <div class="card-content">
+                    <p>Arohi Akter is someone who is regarded with great respect within our friend circle. She always engages with her friends through fun, pranks, and many other activities. Just like our teammate Zahid, she is also a cat lover. Speaking of her beauty, in one word she is very cute — you can’t help but say ‘Ma Sha Allah.’ All in all, Arohi Akter is a highly respected girl among our friends.</p>
+                </div>
+            </div>
+
+            <!-- Skills Card -->
+            <div class="profile-card">
+                <h2 class="card-title">Qualities</h2>
+                <div class="card-content">
+                    <p>Like every other member, Arohi also has many qualities. A few of them are mentioned below.</p>
+                    <div class="skills-list">
+                        <div class="skill-item">Fearless</div>
+                        <div class="skill-item">Brave women</div>
+                        <div class="skill-item">Emotional</div>
+                        <div class="skill-item">Handling any situation</div>
+                        <div class="skill-item">Extrovert</div>
+                        <div class="skill-item">Leadership</div>
+                        <div class="skill-item">Cute girl</div>
+                        <div class="skill-item">Instant Idea</div>
+                        <div class="skill-item">Cat lover</div>
+                        <div class="skill-item">Smiley face</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Experience Card -->
+            <div class="profile-card">
+                <h2 class="card-title">Some Experience</h2>
+                <div class="card-content">
+                    <div class="experience-item">
+                        <h3 class="experience-title">Prank Experience</h3>
+                        <div class="experience-company"> Victim (Zahid & Hridoy)</div>
+                        <div class="experience-date">2025 - Present</div>
+                        <p class="experience-description">One day, Arohi Akter played a prank on two of her friends from her circle. Their names were Zahid and Hridoy. The prank created quite a critical and emotional situation, but it was the kind of prank that was meant to happen. Because of this prank, Hridoy got a bit upset, but later on everything went back to normal. You could say this was her best prank ever.</p>
+                    </div>
+                    <div class="experience-item">
+                        <h3 class="experience-title">Responsive Communication</h3>
+                        <div class="experience-company">In (Facebook)</div>
+                        <div class="experience-date">2023 - 2025</div>
+                        <p class="experience-description">From the perspective of responsive communication, Arohi Akter is very good. On Facebook, she always stays connected with her friend circle and maintains better communication all the time. In one word, she can be called a very good girl.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Education Card -->
+            <div class="profile-card">
+                <h2 class="card-title">Education</h2>
+                <div class="card-content">
+                    <div class="experience-item">
+                        <h3 class="experience-title">Political Science</h3>
+                        <div class="experience-company">Noakhali Government College</div>
+                        <div class="experience-date">Running</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Card -->
+            <div class="profile-card">
+                <h2 class="card-title">Contact Information</h2>
+                <div class="card-content">
+                    <ul class="contact-info">
+                        <li>
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-details">
+                                <div class="contact-type">Email</div>
+                                <div class="contact-value">arshikhanmou<br>112@gmail.com</div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="contact-details">
+                                <div class="contact-type">Phone</div>
+                                <div class="contact-value">+8801 xxx xx xxxx</div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-details">
+                                <div class="contact-type">Location</div>
+                                <div class="contact-value">Noakhali, Bangladesh</div>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Hamburger Menu Toggle
+        const hamburgerMenu = document.querySelector('.hamburger-menu');
+        const navOverlay = document.querySelector('.nav-overlay');
+        
+        hamburgerMenu.addEventListener('click', () => {
+            hamburgerMenu.classList.toggle('active');
+            navOverlay.classList.toggle('active');
+        });
+
+        // Close menu when clicking on a link
+        const navLinks = document.querySelectorAll('.nav-links a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburgerMenu.classList.remove('active');
+                navOverlay.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
